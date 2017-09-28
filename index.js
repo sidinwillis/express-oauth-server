@@ -50,7 +50,7 @@ ExpressOAuthServer.prototype.authenticate = function(options) {
         return this.server.authenticate(request, response, options);
       })
       .tap(function(token) {
-        res.locals.oauth = { token: token };
+        req.user = token.user;
         next();
       })
       .catch(function(e) {
